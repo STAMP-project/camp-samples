@@ -1,16 +1,25 @@
 downloadimages:
-  Ubuntu:
-    features: [ubuntu]
+  Xenial:
+    features: [xenial]
     name: ubuntu
-    tag: latest
+    tag: xenial
+  Trusty:
+    features: [trusty]
+    name: ubuntu
+    tag: trusty
 buildingrules:
   Apache:
     requires: [ubuntu]
     adds: [apache]
     svar: [ThreadLimit, ThreadPerChild]
-  Postgres:
+  Postgres9_3:
     requires: [ubuntu]
-    adds: [postgres]
+    adds: [postgres9_3]
+    svar: [PostgresLinuxDist]
+  Postgres9_4:
+    requires: [ubuntu]
+    adds: [postgres9_4]
+    svar: [PostgresLinuxDist]
   ShowcaseServer:
     requires: [ubuntu]
     adds: [showcase]

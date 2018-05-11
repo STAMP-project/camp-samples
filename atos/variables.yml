@@ -26,3 +26,18 @@ ThreadPerChild:
           filename: "docker-compose.yml"
           placement: "ThreadsPerChild=25"
           replacement: "ThreadsPerChild=${value}"
+PostgresLinuxDist:
+  PostgresXenial:
+    operations:
+      - substituion1:
+          engine: regexp
+          filename: Dockerfile
+          placement: "precise-pgdg"
+          replacement: "xenial-pgdg"
+  PostgresTrusty:
+    operations:
+      - substituion1:
+          engine: regexp
+          filename: Dockerfile
+          placement: "precise-pgdg"
+          replacement: "trusty-pgdg"

@@ -1,4 +1,4 @@
 apache:
-ubuntu:
-postgres:
+ubuntu: [xenial, trusty]
+postgres: [postgres9_3, postgres9_4]
 showcase:
