@@ -8,22 +8,23 @@ downloadimages:
     name: ubuntu
     tag: trusty
 buildingrules:
-  Apache:
-    requires: [ubuntu]
-    adds: [apache]
-    svar: [ThreadLimit, ThreadPerChild]
+#  Apache:
+#    requires: [ubuntu]
+#    adds: [apache]
+#    svar: [ThreadLimit, ThreadPerChild]
   Postgres9_3:
     requires: [ubuntu]
     adds: [postgres9_3]
-    svar: [PostgresLinuxDist]
+    #svar: [PostgresLinuxDist]
   Postgres9_4:
     requires: [ubuntu]
     adds: [postgres9_4]
-    svar: [PostgresLinuxDist]
-  ShowcaseServer:
-    requires: [ubuntu]
-    adds: [showcase]
-    depends: [apache, postgres]
-maxfreebuild: 3
-constraints:
-  - BuildImage.forall(bi1, Not(And(bi1.features.contains(features['apache']), bi1.features.contains(features['postgres']))))
+    #svar: [PostgresLinuxDist]
+#  ShowcaseServer:
+#    requires: [ubuntu]
+#    adds: [showcase]
+#    depends: [apache, postgres]
+#maxfreebuild: 3
+mandatoryfeature: [postgres]
+#constraints:
+#  - BuildImage.forall(bi1, Not(And(bi1.features.contains(features['apache']), bi1.features.contains(features['postgres']))))
