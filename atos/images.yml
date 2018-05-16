@@ -8,10 +8,10 @@ downloadimages:
     name: ubuntu
     tag: trusty
 buildingrules:
-#  Apache:
-#    requires: [ubuntu]
-#    adds: [apache]
-#    svar: [ThreadLimit, ThreadPerChild]
+  #Apache:
+  #  requires: [ubuntu]
+  #  adds: [apache]
+  #  svar: [ThreadLimit, ThreadPerChild]
   Postgres9_3:
     requires: [ubuntu]
     adds: [postgres9_3]
@@ -24,7 +24,8 @@ buildingrules:
 #    requires: [ubuntu]
 #    adds: [showcase]
 #    depends: [apache, postgres]
-#maxfreebuild: 3
+maxfreebuild: 3
 mandatoryfeature: [postgres]
 #constraints:
+#  - BuildImage.forall(bi1, Implies(bi1.features.contains(features['xenial']), bi1.ival.forall(vv1, And(vv1.variable == 'PostgresLinuxDist', vv1.value == 'PostgresXenial'))))
 #  - BuildImage.forall(bi1, Not(And(bi1.features.contains(features['apache']), bi1.features.contains(features['postgres']))))
