@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+
+  tests:
+    image: camp-tests_0
+    depends_on:
+      - lutece
+
+  lutece:
+    image: camp-lutece_0
+    ports:
+      - "8080:8080"
+    depends_on:
+      - storage
+
+  storage:
+    image: camp-mysql_0
+    expose:
+      - 3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=motdepasse
