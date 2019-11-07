@@ -1,0 +1,103 @@
+version: '3'
+
+services:
+
+  browser:
+    build: ./browser
+    volumes:
+      - ./logs/:/browser/citygo-tests/apache-logs
+   
+  apache:
+    build: ./apache
+    container_name: my_apache
+    environment:
+      - HTTPD_VERSION=2.4
+      - StartServers=2
+      - MinSpareThreads=25
+      - MaxSpareThreads=75
+      - ThreadLimit=64
+      - ThreadsPerChild=25
+      - MaxRequestWorkers=150
+      - MaxConnectionsPerChild=0
+      - DJANGO_SETTINGS_MODULE=citygo_settings.settings
+      - BROWSERNAME=chrome
+      - PLATFORM=LINUX
+      - JAVASCRIPTENABLED=True
+      - MAXINSTANCES=50
+      - CSSSELECTORSENABLED=True
+      - BROWSERCONNECTIONENABLED=True
+    ports:
+      - "80:80"
+    volumes:
+      - ./logs:/var/log/apache2/
+   
+  web:
+    build: ./citygo
+    container_name: "my_web"
+    restart: always
+    environment:
+      - DJANGO_SETTINGS_MODULE=citygo_settings.settings
+      - BROWSERNAME=chrome
+      - PLATFORM=LINUX
+      - JAVASCRIPTENABLED=True
+      - MAXINSTANCES=50
+      - CSSSELECTORSENABLED=True
+      - BROWSERCONNECTIONENABLED=True
+      - POSTGRESQL_HOST=db
+      - port=6666
+    depends_on:
+      - apache
+      - mongo
+      - db
+    links:
+      - db:db
+    ports:
+      - "8003:8003"
+   
+  db:
+    image: postgres:9.3
+    container_name: my_postgresql
+    restart: always
+    environment:
+      - POSTGRES_DB=citygo_malaga
+      - POSTGRES_USER=citygo
+      - POSTGRES_PASSWORD=5X6sdoq0!?az=v2aSX
+      - PGDATA=/var/lib/postgresql/data/pgdata  
+    command: sh -c "docker-entrypoint.sh -c 'port=6666' -c 'listen_addresses='*'' -c 'max_connections=500' -c 'shared_buffers=256'"
+    ports:
+      - "6666:6666"
+    expose:
+      - "6666"
+   
+  hub:
+    image: selenium/hub
+    container_name: "selenium_hub"
+    volumes:
+      - /dev/shm:/dev/shm/
+    ports:
+      - "4444:4444"
+   
+  selenium_chrome:
+    image: selenium/node-chrome-debug
+    container_name: selenium_chrome
+    environment:
+      - HUB_PORT_4444_TCP_ADDR=hub
+      - HUB_PORT_4444_TCP_PORT=4444
+    ports:
+      - "5900:5900"
+    depends_on:
+      - hub
+   
+  mongo:
+    image: mongo:4.0.6-xenial
+    container_name: "my_mongo"
+    environment:
+      - MONGO_DATA_DIR=/data/db
+      - MONGO_LOG_DIR=/dev/null
+    volumes:
+      - ./data/db:/data/db
+    ports:
+      - "22222:22222"
+    expose:
+      - "22222"
+

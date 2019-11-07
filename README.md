@@ -1,9 +1,14 @@
 # CAMP-samples
-Sample cases for configuration testing amplification
 
-# Build your own image for amplifier (Not necessary, unless you don't want to download the standard one)
-//```bash cd ./docker && docker build -t <your_image> .```
+You find here the STAMP case-studies of the [CAMP
+tool](https://github.com/STAMP-project/camp).
 
-# Run configuration testing amplification
-```bash docker run -v <your_dir>:/root/workingdir songhui/stamp-conf-amp```
+There are five:
+ * Activeon
+ * OW2 / Lutece
+ * TellU
+ * AtoS
+ * XWiki
 
+See the [CAMP documentation](https://stamp-project.github.io/camp) for
+instruction about how to run these case-studies.

@@ -1,0 +1,94 @@
+#
+# CAMP
+#
+# Copyright (C) 2017, 2018 SINTEF Digital
+# All rights reserved.
+#
+# This software may be modified and distributed under the terms
+# of the MIT license.  See the LICENSE file for details.
+#
+
+goals:
+  running:
+    - Entry
+
+components:
+
+  browser:
+    provides_services: [ Entry ]
+    requires_services: [ Test ]
+    implementation:
+      docker:
+        file: browser/Dockerfile
+    tests:
+      command:  pytest citygo-tests/tests.py --html=pytest_report.html --junitxml=report.xml --self-contained-html
+      reports:
+        location: "./"
+        pattern: ".xml"
+        format: junit
+
+  hub:
+    provides_services: [ Test ]
+    requires_services: [ HttpProxy ]
+    implementation:
+      docker:
+        image: selenium/hub
+
+  nginx:
+    provides_services: [ HttpProxy ]
+    requires_services: [ CityGo ]
+    variables:
+      gzip:
+        values: [on, off]
+        realization:
+          - targets: [ docker-compose.yml ]
+            pattern: "gzip=on"
+            replacements:
+              - gzip=on
+              - gzip=off
+    implementation:
+      docker:
+        file: nginx/Dockerfile
+        
+  citygo:
+    provides_services: [ CityGo ]
+    requires_services: [ Postgres, Mongo ]
+    requires_features: [ Python ]
+    variables:
+      django:
+        values: [ v1.10.2, v1.11 ]
+        realization:
+          - targets: [ citygo/requirements.txt ]
+            pattern: "Django==1.10.2"
+            replacements:
+              - "Django==1.10.2"
+              - "Django==1.11"
+    implementation:
+      docker:
+        file: citygo/Dockerfile
+
+  ubuntu:
+    provides_features: [ Ubuntu ]
+    implementation:
+      docker:
+        image: ubuntu:xenial
+        
+  mongo:
+    provides_services: [ Mongo ]
+    implementation:
+      docker:
+        image: mongo:4.0.6-xenial
+
+  python:
+    provides_features: [ Python ]
+    requires_features: [ Ubuntu ]
+    implementation:
+      docker:
+        file: python/Dockerfile
+
+  postgres:
+    provides_services: [ Postgres ]
+    implementation:
+      docker:
+        image: postgres:9.3
+
