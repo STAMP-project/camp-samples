@@ -1,7 +1,7 @@
 FROM camp/runtime
 
 ENV JETTY_VERSION=9.3.27.v20190418
-ENV JETTY_ARCHIVE= https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-distribution/${JETTY_VERSION}/jetty-distribution-${JETTY_VERSION}.zip
+ENV JETTY_ARCHIVE=https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-distribution/${JETTY_VERSION}/jetty-distribution-${JETTY_VERSION}.zip
 
 ENV JETTY_HOME=/usr/local/jetty
 
@@ -9,8 +9,8 @@ ENV WEBAPPS=${JETTY_HOME}/webapps
 
 RUN apt-get -y update \
         && apt-get -y upgrade \
-        && apt-get -y install wget \
-        && 
+        && apt-get -y install --no-install-recommends wget unzip \
+        && rm -rf /var/lib/apt/lists/*
 
 RUN mkdir ${JETTY_HOME} \
         && wget ${JETTY_ARCHIVE} -O /tmp/jetty.zip \
@@ -19,7 +19,7 @@ RUN mkdir ${JETTY_HOME} \
 
 EXPOSE 8080
 
-CMD ["java","-jar","/usr/local/jetty/start.jar"]
+CMD ["java","-jar","${JETTY_HOME}/start.jar"]
 
 
 

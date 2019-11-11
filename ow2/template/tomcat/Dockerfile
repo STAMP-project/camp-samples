@@ -16,6 +16,7 @@ ARG TOMCAT_VERSION=${TOMCAT_MAJOR}.${TOMCAT_REVISION}
 ARG TOMCAT_ARCHIVE=http://archive.apache.org/dist/tomcat/tomcat-${TOMCAT_MAJOR}/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz
 
 ENV TOMCAT_HOME=/usr/local/tomcat
+ENV TOMCAT_TMP=/tmp/tomcat
 
 ENV WEBAPPS=${TOMCAT_HOME}/webapps
 
@@ -23,7 +24,8 @@ RUN apt-get -y update \
         && apt-get -y upgrade \
         && apt-get -y install wget
 
-RUN mkdir ${TOMCAT_HOME} \
+RUN mkdir ${TOMCAT_TMP} \
+        && mkdir ${TOMCAT_HOME} \
         && wget ${TOMCAT_ARCHIVE} -O /tmp/tomcat.tar.gz \
         && cd /tmp && tar xvfz tomcat.tar.gz \
         && cp -Rv /tmp/apache-tomcat-${TOMCAT_VERSION}/* ${TOMCAT_HOME}

@@ -1,6 +1,8 @@
 #!/bin/bash
 
-JAVA_OPTIONS=-Xmx512m \
-    -XX:+UseConcMarkSweepGC
 
-java ${JAVA_OPTIONS} -jar ${JETTY_HOME}/start.jar
+JAVA_OPTIONS=('-Dorg.eclipse.jetty.annotations.AnnotationParser.LEVEL=OFF'
+              '-Xmx512m')
+
+cd ${JETTY_HOME} && java ${JAVA_OPTIONS[@]} -jar start.jar
+
