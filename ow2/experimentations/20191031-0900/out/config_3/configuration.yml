@@ -1,0 +1,27 @@
+instances:
+  jre_0:
+    configuration: {}
+    definition: jre
+    service_providers: []
+  lutece_0:
+    configuration: {}
+    definition: lutece
+    feature_provider: tomcat_0
+    service_providers:
+    - mysql_0
+  mysql_0:
+    configuration:
+      version: 57
+    definition: mysql
+    service_providers: []
+  tests_0:
+    configuration: {}
+    definition: tests
+    service_providers:
+    - lutece_0
+  tomcat_0:
+    configuration:
+      version: v9
+    definition: tomcat
+    feature_provider: jre_0
+    service_providers: []

@@ -1,0 +1,23 @@
+digraph Config {
+  node [shape="record",style="filled",fillcolor="white"];
+  subgraph cluster_1 {
+    label="container 1";
+    style="filled";
+    color="lightgrey";
+    tests_0 [label="tests"];
+  }
+  subgraph cluster_2 {
+    label="container 2";
+    style="filled";
+    color="lightgrey";
+    lutece_0 [label="lutece"];
+  }
+  subgraph cluster_3 {
+    label="container 3";
+    style="filled";
+    color="lightgrey";
+    mysql_0 [label="{mysql|version=57}"];
+  }
+  tests_0 -> lutece_0;
+  lutece_0 -> mysql_0;
+}

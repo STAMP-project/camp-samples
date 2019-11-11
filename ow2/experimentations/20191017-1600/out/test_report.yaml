@@ -1,0 +1,123 @@
+reports:
+- path: ./out/config_1
+  tests:
+    identifier: all tests
+    tests:
+    - identifier: all samples
+      tests:
+      - identifier: 1 /site-forms-demo/
+        verdict: 1
+      - identifier: Total
+        verdict: 1
+- path: ./out/config_2
+  tests:
+    identifier: all tests
+    tests:
+    - identifier: all samples
+      tests:
+      - error: No successful call to sample
+        identifier: 60 /site-forms-demo/jsp/admin/DoAdminLogin.jsp
+        verdict: 3
+      - identifier: 75 /site-forms-demo/js/admin.js
+        verdict: 1
+      - identifier: 28 /site-forms-demo/jsp/site/Portal.jsp
+        verdict: 1
+      - identifier: 33 /site-forms-demo/js/plugins/asynchronousupload/jquery.fileupload.js
+        verdict: 1
+      - identifier: 39 /site-forms-demo/js/plugins/asynchronousupload/jquery.fileupload-validate.js
+        verdict: 1
+      - error: No successful call to sample
+        identifier: 104 /site-forms-demo/jsp/admin/DoAdminLogout.jsp
+        verdict: 3
+      - identifier: 74 /site-forms-demo/js/bootstrap-filestyle.min.js
+        verdict: 1
+      - identifier: 32 /site-forms-demo/js/plugins/asynchronousupload/vendor/jquery.ui.widget.js
+        verdict: 1
+      - identifier: 16 /site-forms-demo/js/plugins/asynchronousupload/jquery.fileupload.js
+        verdict: 1
+      - failure: 19.130714% of errors calling the sample
+        identifier: Total
+        verdict: 2
+      - identifier: 48 /site-forms-demo/jsp/site/Portal.jsp
+        verdict: 1
+      - error: No successful call to sample
+        identifier: 45 /site-forms-demo/jsp/site/plugins/asynchronousupload/GetMainUploadJs.jsp
+        verdict: 3
+      - error: No successful call to sample
+        identifier: 81 /site-forms-demo/jsp/admin/plugins/forms/MultiviewForms.jsp
+        verdict: 3
+      - identifier: 38 /site-forms-demo/js/plugins/asynchronousupload/jquery.iframe-transport.js
+        verdict: 1
+      - identifier: 76 /site-forms-demo/js/app.min.js
+        verdict: 1
+      - identifier: 82 /site-forms-demo/servlet/plugins/adminavatar/avatar
+        verdict: 1
+      - error: No successful call to sample
+        identifier: 93 /site-forms-demo/jsp/admin/plugins/forms/ManageDirectoryFormResponseDetails.jsp?view=view_form_response_details&filter_forms_id_form=-1&selected_panel=forms&id_form_response=2
+        verdict: 3
+      - identifier: 19 /site-forms-demo/js/plugins/asynchronousupload/canvas-to-blob.min.js
+        verdict: 1
+      - error: No successful call to sample
+        identifier: 98 /site-forms-demo/jsp/admin/plugins/forms/ManageDirectoryFormResponseDetails.jsp
+        verdict: 3
+      - identifier: 83 /site-forms-demo/js/plugins/forms/multiview/forms-multiview.js
+        verdict: 1
+      - identifier: 15 /site-forms-demo/js/plugins/asynchronousupload/jquery.iframe-transport.js
+        verdict: 1
+      - identifier: 13 /site-forms-demo/js/bootstrap.min.js
+        verdict: 1
+      - identifier: 73 /site-forms-demo/js/jquery/jquery-ui.min.js
+        verdict: 1
+      - identifier: 20 /site-forms-demo/js/plugins/asynchronousupload/jquery.fileupload-validate.js
+        verdict: 1
+      - identifier: 41 /site-forms-demo/js/plugins/asynchronousupload/jquery.fileupload-image.js
+        verdict: 1
+      - identifier: 1 /site-forms-demo/
+        verdict: 1
+      - identifier: 40 /site-forms-demo/js/plugins/asynchronousupload/jquery.fileupload-process.js
+        verdict: 1
+      - identifier: 36 /site-forms-demo/js/bootstrap-datepicker.js
+        verdict: 1
+      - identifier: 21 /site-forms-demo/js/plugins/forms/terms-of-service.js
+        verdict: 1
+      - identifier: 14 /site-forms-demo/js/plugins/asynchronousupload/vendor/jquery.ui.widget.js
+        verdict: 1
+      - identifier: 35 /site-forms-demo/js/locales/bootstrap-datepicker.fr.js
+        verdict: 1
+      - identifier: 43 /site-forms-demo/jsp/site/Portal.jsp?page=forms
+        verdict: 1
+      - identifier: 17 /site-forms-demo/js/plugins/asynchronousupload/load-image.min.js
+        verdict: 1
+      - identifier: 22 /site-forms-demo/js/plugins/asynchronousupload/jquery.fileupload-image.js
+        verdict: 1
+      - error: No successful call to sample
+        identifier: 107 /site-forms-demo/jsp/admin/AdminLogin.jsp
+        verdict: 3
+      - identifier: 31 /site-forms-demo/js/plugins/asynchronousupload/load-image.min.js
+        verdict: 1
+      - identifier: 94 /site-forms-demo/servlet/plugins/adminavatar/avatar
+        verdict: 1
+      - identifier: 34 /site-forms-demo/js/plugins/asynchronousupload/canvas-to-blob.min.js
+        verdict: 1
+      - identifier: 47 /site-forms-demo/jsp/site/Portal.jsp?page=forms
+        verdict: 1
+      - error: No successful call to sample
+        identifier: 37 /site-forms-demo/jsp/site/plugins/asynchronousupload/GetMainUploadJs.jsp
+        verdict: 3
+      - error: No successful call to sample
+        identifier: 51 /site-forms-demo/jsp/admin/AdminLogin.jsp
+        verdict: 3
+      - identifier: 50 /site-forms-demo/
+        verdict: 1
+      - identifier: 101 /site-forms-demo/servlet/plugins/adminavatar/avatar
+        verdict: 1
+      - identifier: 46 /site-forms-demo/jsp/site/Portal.jsp?page=forms
+        verdict: 1
+      - identifier: 11 /site-forms-demo/js/jquery/jquery.min.js
+        verdict: 1
+      - identifier: 27 /site-forms-demo/jsp/site/Portal.jsp
+        verdict: 1
+      - identifier: 77 /site-forms-demo/servlet/plugins/adminavatar/avatar
+        verdict: 1
+      - identifier: 18 /site-forms-demo/js/plugins/asynchronousupload/jquery.fileupload-process.js
+        verdict: 1

@@ -1,0 +1,21 @@
+reports:
+- path: ./out/config_1
+  tests:
+    identifier: all tests
+    tests:
+    - identifier: all samples
+      tests:
+      - identifier: 1 /site-forms-demo/
+        verdict: 1
+      - identifier: Total
+        verdict: 1
+- path: ./out/config_2
+  tests:
+    identifier: all tests
+    tests:
+    - identifier: all samples
+      tests:
+      - identifier: 1 /site-forms-demo/
+        verdict: 1
+      - identifier: Total
+        verdict: 1

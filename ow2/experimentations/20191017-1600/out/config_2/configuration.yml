@@ -1,0 +1,16 @@
+instances:
+  lutece_0:
+    configuration: {}
+    definition: lutece
+    service_providers:
+    - mysql_0
+  mysql_0:
+    configuration:
+      version: 57
+    definition: mysql
+    service_providers: []
+  tests_0:
+    configuration: {}
+    definition: tests
+    service_providers:
+    - lutece_0
