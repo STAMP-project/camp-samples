@@ -22,6 +22,7 @@ components:
         file: tests/Dockerfile
     tests:
       command: -n -t Forms-test.jmx -l Forms-test.jtl -e -o results
+      liveness_test: sh /tests/ready.sh
       reports:
         format: jmeter
         location: results
